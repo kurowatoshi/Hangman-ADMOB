@@ -1,0 +1,88 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2021/maui/toolkit"
+             x:Class="Hangman.MainPage"
+             BackgroundColor="DarkGreen">
+
+
+    <!-- Grid Layout to layer background image and content -->
+    <Grid RowDefinitions=".6*, .4*">
+        <!-- Background Image (set to fill the entire screen) -->
+            <Image Source="backgrounds.png" 
+       Aspect="AspectFill" 
+       HorizontalOptions="FillAndExpand"
+       VerticalOptions="FillAndExpand" 
+       IsVisible="True"/>
+
+            <!-- Category Picker -->
+        <Picker x:Name="CategoryPicker" 
+                Title="Select Category" 
+                SelectedIndexChanged="OnCategoryChanged"
+                TextColor="White"
+                FontAttributes="Bold"
+                Margin="10,0,0,0"
+                FontSize="15">
+            <Picker.Items>
+                <x:String>Animals</x:String>
+                <x:String>Fruits</x:String>
+                <x:String>Countries</x:String>
+                <x:String>Cities</x:String>
+                <x:String>Movies</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <VerticalStackLayout Spacing="1" Margin="0,10,0,0">
+            <!-- Your existing content remains here -->
+            <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Text="{Binding GameStatus}"
+                TextColor="White" />
+            <Image HeightRequest="240" Source="{Binding CurrentImage}"
+                   Margin="50,10,0,0"/>
+            <Label FontSize="40"
+                   HorizontalOptions="Center"
+                   Text="{Binding Spotlight}"
+                   VerticalOptions="Center"
+                   TextColor="White" />
+            <Label FontSize="Large"
+                   HorizontalTextAlignment="Center"
+                   Text="{Binding Message}"
+                   TextColor="White" />
+            <HorizontalStackLayout Spacing="40" Margin="30,0,0,0">
+                <Button HorizontalOptions="Center"
+                        Text="Reset"
+                        WidthRequest="100"
+                        TextColor="Gray"
+                        BackgroundColor="White"
+                        Clicked="Button_Clicked" />
+
+                <Button HorizontalOptions="Center"
+                        Text="Hint"
+                        WidthRequest="100"
+                        Margin="90,0,0,0"
+                        TextColor="Gray"
+                        BackgroundColor="White"
+                        Clicked="HintButton_Clicked" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+        <FlexLayout Grid.Row="1" JustifyContent="SpaceEvenly"
+                    Wrap="Wrap"
+                    x:Name="LettersContainer"
+                    BindableLayout.ItemsSource="{Binding Letters}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Button
+                        Margin="5,0,0,0"
+                        HeightRequest="50"
+                        WidthRequest="45"
+                        Text="{Binding .}"
+                        TextColor="Gray"
+                        BackgroundColor="White"
+                        Clicked="Button_Clicked_1" />
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
+    </Grid>
+</ContentPage>

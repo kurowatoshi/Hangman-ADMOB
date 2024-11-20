@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Hangman.LandingPage"
+             BackgroundColor="#0D92F4">
+    
+    <ScrollView>
+        <!-- Use Grid as the root layout to allow layering -->
+        <Grid>
+            <!-- Background image in the first layer -->
+            <Image Source="backgrounds.png"
+           Aspect="AspectFill"
+           HorizontalOptions="FillAndExpand"
+           VerticalOptions="FillAndExpand"
+           IsVisible="True"
+           ZIndex="-1" />
+            <!-- Background layer -->
+
+            <!-- Content in the second layer -->
+            <VerticalStackLayout Spacing="20" HorizontalOptions="CenterAndExpand" Margin="0,50,0,0">
+                <Label
+            Text="Hang Princess"
+            FontSize="52"
+            TextColor="White"
+            FontAttributes="Bold"
+            HorizontalOptions="Center" />
+                <Label
+            Text="Themed: Disney Princess"
+            FontSize="15"
+            TextColor="White"
+            FontAttributes="Bold"
+            Margin="0,-15,0,0"
+            HorizontalOptions="Center" />
+                <Image
+            Source="landing.png"
+            HeightRequest="430"
+            Margin="0,0,0,0"/>
+                <Button
+            Text="Play"
+            TextColor="White"
+            FontSize="40"
+            BackgroundColor="DarkGreen"
+            Clicked="OnPlayButtonClicked" />
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+    
+
+</ContentPage>
